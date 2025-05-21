@@ -5,6 +5,8 @@ import android.os.RemoteException;
 
 public interface IProcessObserver {
 
+    void onProcessStarted(int pid, int processUid, int packageUid, String packageName, String processName);
+
     void onForegroundActivitiesChanged(int pid, int uid, boolean foregroundActivities) throws RemoteException;
 
     void onProcessDied(int pid, int uid) throws RemoteException;
