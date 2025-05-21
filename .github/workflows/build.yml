@@ -1,16 +1,14 @@
 name: Build
-
 on:
   push:
     branches: [ "master" ]
-  pull_request:
-    branches: [ "master" ]
-
+  workflow_dispatch:
 jobs:
   build:
-
     runs-on: ubuntu-latest
-
+    env:
+      NEXUS_USER: ${{ secrets.NEXUS_USER }}
+      NEXUS_PASSWORD: ${{ secrets.NEXUS_PASSWORD }}
     steps:
     - uses: actions/checkout@v3
     - name: set up JDK 17
@@ -22,9 +20,4 @@ jobs:
     - name: Build with Gradle
       run: |
         echo 'org.gradle.jvmargs=-Xmx2048m -XX:+UseParallelGC' >> gradle.properties
-        ./gradlew publishToMavenLocal
-    - name: Upload build artifact
-      uses: actions/upload-artifact@v3
-      with:
-        name: mavenlocal-artifact
-        path: ~/.m2
+        ./gradlew publish
