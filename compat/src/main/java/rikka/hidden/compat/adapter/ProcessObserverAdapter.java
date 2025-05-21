@@ -5,6 +5,10 @@ import android.os.RemoteException;
 
 public class ProcessObserverAdapter extends IProcessObserver.Stub {
 
+    public void onProcessStarted(int pid, int processUid, int packageUid, String packageName, String processName) {
+
+    }
+
     public void onForegroundActivitiesChanged(int pid, int uid, boolean foregroundActivities) throws RemoteException {
     }
 
