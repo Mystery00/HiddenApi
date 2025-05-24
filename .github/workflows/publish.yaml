@@ -1,4 +1,4 @@
-name: Build
+name: Build Publish To GitHub
 on:
   push:
     branches: [ "master" ]
