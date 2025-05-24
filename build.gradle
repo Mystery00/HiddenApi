@@ -1,7 +1,7 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 buildscript {
     ext {
-        version_name = '4.3.3'
+        version_name = '4.3.3-m'
     }
 }
 
@@ -62,8 +62,11 @@ subprojects {
             repositories {
                 maven {
                     name 'ossrh'
-                    url 'https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/'
-                    credentials(PasswordCredentials)
+                    url 'https://maven.pkg.github.com/Mystery00/HiddenApi'
+                    credentials {
+                        username = System.getenv("NEXUS_USER")
+                        password = System.getenv("NEXUS_PASSWORD")
+                    }
                 }
             }
         }
